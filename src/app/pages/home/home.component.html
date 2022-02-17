@@ -1,1 +1,8 @@
-<p>home works!</p>
+<ng-container *ngIf="!(gameStarted$ | async)">
+    <p>Current highscore: {{ highscore$ | async }}</p>
+</ng-container>
+<ng-container *ngIf="(gameStarted$ | async)">
+    <div *ngFor="let mole of (wackamole$ | async)">
+        hey
+    </div>
+</ng-container>
