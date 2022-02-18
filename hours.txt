@@ -1,0 +1,8 @@
+20 minutes - Structure the Angular Project, routing and install NgRx
+30 minutes - Created home, models, state folder and its files
+15 minutes - Created all HTML elements
+30 minutes - Created all actions, reducers and selectors
+15 minutes - style HTML elements
+40 minutes - Created all home.component.ts functions
+20 minutes - Tested everything
+Total - 2:50
