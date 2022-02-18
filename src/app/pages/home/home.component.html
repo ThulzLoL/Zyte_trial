@@ -1,8 +1,19 @@
+<div class="header">
+    <p>Highscore: {{ highscore$ | async }}</p>
+    <p>Current score: {{ currentScore$ | async }}</p>
+</div>
+
 <ng-container *ngIf="!(gameStarted$ | async)">
-    <p>Current highscore: {{ highscore$ | async }}</p>
+    <div class="container">       
+        <button class="container-start" (click)="startGame()">{{ ((highscore$ | async) > 0) ? 'Try Again' : 'Start the game!' }}</button>
+    </div>
 </ng-container>
 <ng-container *ngIf="(gameStarted$ | async)">
-    <div *ngFor="let mole of (wackamole$ | async)">
-        hey
+    <div class="container">
+        <div class="container-mole" *ngFor="let mole of (whackamole$ | async)">
+            <button (click)="whackedTheMole(mole.id)" class="container-mole-button" [class.active]="mole.active">
+                Mole
+            </button>
+        </div>
     </div>
 </ng-container>

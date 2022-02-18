@@ -1,0 +1,49 @@
+
+.header {
+    background-color: rgba(87, 87, 241, 0.767);
+    color: white;
+    width: 100%;
+    padding: 20px 15px;
+    box-sizing: border-box;
+    p {
+        font-weight: 600;
+        font-size: 16px;
+        margin: 0px;
+
+    }
+}
+.container{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin: auto;
+    margin-top: 120px;
+    p {
+        font-weight: 600;
+        font-size: 30px;
+        text-transform: uppercase;
+    }
+    &-start {
+        font-size: 16px;
+        padding: 15px 25px 15px 25px;
+    }
+    &-mole {
+        width: 33%;
+        height: 100px;
+        display: inline-block;
+        margin-bottom: 40px;
+        &-button{
+            transition: 1s ease-in-out;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 1px solid black;
+            cursor: pointer;
+            &.active{
+                transition: 1s ease-in-out;
+                background-color: black;
+                color: white;
+            }
+        }
+    }
+}
