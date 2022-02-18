@@ -1,13 +1,13 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { Wackamole } from '../models/wackamole.model';
+import { Whackamole } from '../models/whackamole.model';
 import { HomeState } from './home.reducer';
 
 export const selectHomeState = createFeatureSelector<HomeState>('home')
 
-export const selectWackamole = createSelector(
+export const selectWhackamole = createSelector(
     selectHomeState,
     (homeState: HomeState) => {
-        return homeState.wackamole
+        return homeState.whackamole
     }
 )
 
@@ -22,5 +22,11 @@ export const selectHighscore = createSelector(
     selectHomeState,
     (homeState: HomeState) => {
         return homeState.highscore
+    }
+)
+export const selectCurrentScore = createSelector(
+    selectHomeState,
+    (homeState: HomeState) => {
+        return homeState.currentScore
     }
 )
