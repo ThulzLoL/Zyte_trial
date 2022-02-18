@@ -5,4 +5,5 @@
 15 minutes - style HTML elements
 40 minutes - Created all home.component.ts functions
 20 minutes - Tested everything
-Total - 2:50
+20 minutes - Timer added
+Total - 3:10
