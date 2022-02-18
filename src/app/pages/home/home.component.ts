@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   currentScore$ = this.store.select(selectCurrentScore)
   timer$ = this.store.select(selectTimer)
   interval$: any;
+  newMole: any;
   constructor(
     private store: Store,
     private homeService: HomeService
@@ -34,17 +35,15 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.store.dispatch(homeActionsToggleGame({ gameState: false}));
       subscriptionInterval.unsubscribe();
+      clearTimeout(this.newMole);
     }, 30000);
   }
 
-  createMole(){
+  async createMole(){
     let time = this.homeService.getArbitraryNumber(1000, 3000);
     this.store.dispatch(homeActionsGenerateMole());
-    setTimeout(async () => {
-      let gameState = await this.store.pipe(select(selectGamestate),take(1)).toPromise();
-      if(gameState){
-        this.createMole();
-      }
+    this.newMole = setTimeout(() => {
+      this.createMole();
     }, time);
   }
 

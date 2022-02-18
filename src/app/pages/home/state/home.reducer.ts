@@ -47,11 +47,15 @@ export const initialState: HomeState = {
 export const homeReducer = createReducer(
     initialState,
     on(homeActionsToggleGame, (state, { gameState }) => {
+        let newHighscore = (!gameState && state.currentScore > state.highscore) ? state.currentScore : state.highscore; 
+        let currentScore = (!gameState) ? state.currentScore : 0; 
         return {
             ...state, 
-            currentScore: 0,
+            highscore: newHighscore,
+            currentScore,
             gameStarted: gameState,
-            timer: 30
+            timer: 30,
+            whackamole: initialState.whackamole
         };
     }),
     on(homeActionsWhackamole, (state, { id }) => {
@@ -61,8 +65,7 @@ export const homeReducer = createReducer(
         }
         return {
             ...state,
-            currentScore: state.currentScore + 1, 
-            highscore: ((state.currentScore + 1) > state.highscore) ? (state.currentScore + 1) : state.highscore,
+            currentScore: state.currentScore + 1,
             whackamole: state.whackamole.map((mole, i) => {
                 if(index === i){
                     return {
@@ -77,8 +80,10 @@ export const homeReducer = createReducer(
     }),
     on(homeActionsGenerateMole, (state) => {
         const index = Math.floor(Math.random() * state.whackamole.length);
+        const indexActiveMole = state.whackamole.findIndex(mole => mole.active === true);
         return {
             ...state,
+            currentScore: indexActiveMole === -1 ? state.currentScore : state.currentScore - 1,
             whackamole: state.whackamole.map((mole, i) => {
                 if(index === i){
                     return {

@@ -5,7 +5,7 @@
 
 <ng-container *ngIf="!(gameStarted$ | async)">
     <div class="container">       
-        <button class="container-start" (click)="startGame()">{{ ((highscore$ | async) > 0) ? 'Try Again' : 'Start the game!' }}</button>
+        <button class="container-start" (click)="startGame()">{{ ((currentScore$ | async) !== 0) ? 'Try Again' : 'Start the game!' }}</button>
     </div>
 </ng-container>
 <ng-container *ngIf="(gameStarted$ | async)">
