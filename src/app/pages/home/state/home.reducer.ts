@@ -1,18 +1,21 @@
 
 import { Whackamole } from '../models/whackamole.model';
 import { createReducer, on } from '@ngrx/store';
-import { homeActionsGenerateMole, homeActionsToggleGame, homeActionsWhackamole } from './home.actions';
+import { homeActionsDecreaseTimer, homeActionsGenerateMole, homeActionsToggleGame, homeActionsWhackamole } from './home.actions';
 
 export interface HomeState {
-    highscore: any,
-    whackamole: Array<Whackamole>,
+    currentScore: any,
     gameStarted: boolean,
-    currentScore: any
+    highscore: any,
+    timer: any,
+    whackamole: Array<Whackamole>,
 }
 
 export const initialState: HomeState = {
-    highscore: 0,
     currentScore: 0,
+    gameStarted: false,
+    highscore: 0,
+    timer: 30,
     whackamole: [
         {
             id: '0',
@@ -39,7 +42,6 @@ export const initialState: HomeState = {
             active: false
         },
     ],
-    gameStarted: false
 }
 
 export const homeReducer = createReducer(
@@ -48,7 +50,8 @@ export const homeReducer = createReducer(
         return {
             ...state, 
             currentScore: 0,
-            gameStarted: gameState
+            gameStarted: gameState,
+            timer: 30
         };
     }),
     on(homeActionsWhackamole, (state, { id }) => {
@@ -90,5 +93,11 @@ export const homeReducer = createReducer(
                 }
             })
         };
+    }),
+    on(homeActionsDecreaseTimer, (state) => {
+        return {
+            ...state,
+            timer: state.timer - 1
+        }
     })
 )

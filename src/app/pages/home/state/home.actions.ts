@@ -19,3 +19,7 @@ export const homeActionsToggleGame = createAction(
 export const homeActionsGenerateMole = createAction(
     '[Home Actions] Generate Mole!'
 )
+
+export const homeActionsDecreaseTimer = createAction(
+    '[Home Actions] Timer Decreased!'
+)

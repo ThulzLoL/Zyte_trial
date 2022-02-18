@@ -30,3 +30,9 @@ export const selectCurrentScore = createSelector(
         return homeState.currentScore
     }
 )
+export const selectTimer = createSelector(
+    selectHomeState,
+    (homeState: HomeState) => {
+        return homeState.timer
+    }
+)
