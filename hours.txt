@@ -6,4 +6,5 @@
 40 minutes - Created all home.component.ts functions
 20 minutes - Tested everything
 20 minutes - Timer added
-Total - 3:10
+20 minutes - Bug fixes
+Total - 3:30
